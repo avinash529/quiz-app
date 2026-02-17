@@ -13,8 +13,12 @@
 </head>
 <body class="app-body">
     <div class="page-bg" aria-hidden="true">
-        <span class="glow glow-one"></span>
-        <span class="glow glow-two"></span>
+        <span class="liquid-blob blob-one"></span>
+        <span class="liquid-blob blob-two"></span>
+        <span class="liquid-blob blob-three"></span>
+        <span class="liquid-ring ring-one"></span>
+        <span class="liquid-ring ring-two"></span>
+        <span class="liquid-grid"></span>
     </div>
 
     <main class="app-shell">
