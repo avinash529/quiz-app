@@ -3,7 +3,8 @@
 @section('content')
 <div class="panel-head">
     <p class="eyebrow">Welcome Back</p>
-    <h1 class="heading-title">Log in to continue</h1>
+    <h1 class="heading-title">Log in to <span class="title-accent">continue</span></h1>
+    <p class="heading-sub">Access your account and jump back into timed quiz rounds.</p>
 </div>
 
 @if($errors->any())
@@ -15,6 +16,12 @@
         </ul>
     </div>
 @endif
+
+<div class="auth-highlights">
+    <span>Secure Session</span>
+    <span>Fast Rounds</span>
+    <span>Instant Results</span>
+</div>
 
 <form method="POST" action="{{ route('login') }}" class="auth-form">
     @csrf

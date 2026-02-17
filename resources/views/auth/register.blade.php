@@ -3,7 +3,7 @@
 @section('content')
 <div class="panel-head">
     <p class="eyebrow">Create Account</p>
-    <h1 class="heading-title">Join the quiz app</h1>
+    <h1 class="heading-title">Join the <span class="title-accent">quiz app</span></h1>
     <p class="heading-sub">Set up your account and start playing right away.</p>
 </div>
 
@@ -16,6 +16,12 @@
         </ul>
     </div>
 @endif
+
+<div class="auth-highlights">
+    <span>Track Progress</span>
+    <span>Timed Challenges</span>
+    <span>Simple Setup</span>
+</div>
 
 <form method="POST" action="{{ route('register') }}" class="auth-form">
     @csrf

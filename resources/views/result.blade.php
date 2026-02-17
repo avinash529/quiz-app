@@ -2,10 +2,24 @@
 
 @section('content')
 
+@php
+    $resultClass = strtolower($result);
+    $resultMessage = $result === 'Winner'
+        ? 'Excellent run. You stayed sharp from start to finish.'
+        : ($result === 'Better'
+            ? 'Good effort. A stronger finish will push you to the top tier.'
+            : 'Solid attempt. Review mistakes and run another round.');
+@endphp
+
 <div class="panel-head">
     <p class="eyebrow">Round Complete</p>
-    <h1 class="heading-title">Your Results</h1>
+    <h1 class="heading-title">Your <span class="title-accent">Results</span></h1>
     <p class="heading-sub">Review your score and check the correct answers.</p>
+</div>
+
+<div class="result-banner {{ $resultClass }}">
+    <p>Performance Snapshot</p>
+    <h2>{{ $resultMessage }}</h2>
 </div>
 
 <div class="score-strip">
@@ -30,7 +44,10 @@
             $isCorrect = $userAnswer !== null && $userAnswer === $q['correctAnswer'];
         @endphp
         <article class="question-box">
-            <p class="question-label">Question {{ $loop->iteration }}</p>
+            <p class="question-label">
+                <span>Question {{ $loop->iteration }}</span>
+                <span class="answer-state {{ $isCorrect ? 'good' : 'bad' }}">{{ $isCorrect ? 'Correct' : 'Missed' }}</span>
+            </p>
             <h3 class="question-text">{{ $q['question'] }}</h3>
             <p class="answer-text">
                 Your answer:

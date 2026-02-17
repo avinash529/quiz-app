@@ -2,6 +2,11 @@
 
 @section('content')
 
+<div class="panel-head compact-head">
+    <p class="eyebrow">Live Round</p>
+    <h1 class="heading-title">Choose the <span class="title-accent">correct answer</span></h1>
+</div>
+
 <div class="quiz-meta">
     <div class="meta-pill">
         <span>Question</span>
@@ -28,13 +33,18 @@
 @endif
 
 <div class="question-card">
+    <p class="question-kicker">Question prompt</p>
     <h2 class="question-title">{{ $question['question'] }}</h2>
 
     <form method="POST" action="{{ route('quiz.answer') }}" id="quizForm" class="answers-grid">
         @csrf
 
         @foreach($options as $opt)
-            <button type="submit" name="answer" value="{{ $opt }}" class="answer-btn" data-loading-text="Submitting...">{{ $opt }}</button>
+            @php($optionKey = chr(64 + $loop->iteration))
+            <button type="submit" name="answer" value="{{ $opt }}" class="answer-btn" data-loading-text="Submitting...">
+                <span class="answer-key">{{ $optionKey }}</span>
+                <span class="answer-copy">{{ $opt }}</span>
+            </button>
         @endforeach
     </form>
 </div>

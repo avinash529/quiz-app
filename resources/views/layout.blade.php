@@ -7,9 +7,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="app-body">
     <div class="page-bg" aria-hidden="true">
@@ -23,14 +22,26 @@
 
     <main class="app-shell">
         <section class="main-card">
-            @auth
-                <div class="card-toolbar">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button class="ghost-btn" type="submit" data-loading-text="Signing out...">Logout</button>
-                    </form>
+            <header class="app-topbar">
+                <div class="brand-wrap">
+                    <span class="brand-orb" aria-hidden="true"></span>
+                    <div>
+                        <p class="brand-title">Quiz App</p>
+                        <p class="brand-sub">@auth Live Challenge Mode @else Account Access @endauth</p>
+                    </div>
                 </div>
-            @endauth
+                <div class="topbar-actions">
+                    @auth
+                        <span class="status-pill">Signed In</span>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="ghost-btn" type="submit" data-loading-text="Signing out...">Logout</button>
+                        </form>
+                    @else
+                        <span class="status-pill guest">Guest</span>
+                    @endauth
+                </div>
+            </header>
 
             @if(session('error'))
                 <div class="flash error">{{ session('error') }}</div>
