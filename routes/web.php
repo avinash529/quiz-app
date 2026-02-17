@@ -13,7 +13,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:8,1');
 });
-
+//test
 Route::middleware('auth')->group(function () {
     Route::get('/home', [QuizController::class, 'home'])->name('home');
     Route::post('/start-quiz', [QuizController::class, 'startQuiz'])->name('quiz.start');
